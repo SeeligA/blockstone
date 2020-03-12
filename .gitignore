@@ -1,0 +1,7 @@
+*.o
+
+build/
+bin/
+lib/
+.vscode/
+*.code-workspace

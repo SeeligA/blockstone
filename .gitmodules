@@ -1,0 +1,3 @@
+[submodule "lib/hash-library"]
+	path = lib/hash-library
+	url = https://create.stephan-brumme.com/hash-library/.git
