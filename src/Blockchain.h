@@ -12,12 +12,13 @@ public:
     Blockchain();
 
     void AddBlock(Block bNew);
+    Block _GetLastBlock() const;
 
 private:
     uint32_t _nDifficulty;
     vector<Block> _vChain;
 
-    Block _GetLastBlock() const;
+    //Block _GetLastBlock() const;
 };
 
 

@@ -1,7 +1,7 @@
 #include <sstream>
 #include "Block.h"
 
-Block::Block(uint32_t nIndexIn, const string &sDataIn) : _nIndex(nIndexIn), _sData(sDataIn) {
+Block::Block(uint32_t nIndexIn, const Transaction &sDataIn) : _nIndex(nIndexIn), _sData(sDataIn) {
     _nNonce = -1;
     _tTime = time(nullptr);
 }
@@ -28,19 +28,19 @@ void Block::MineBlock(uint32_t nDifficulty) {
     } while (_sHash.substr(0, nDifficulty) != str);
 
     cout << "Block mined: " << _sHash << endl;
-    cout << "Proof of Work (PoW): " << _nNonce << endl << endl;
+    cout << "Proof of Work (PoW): " << _nNonce << endl;
 
-    //delete cstr;
-
+    delete[] cstr;
 }
 
 
 inline string Block::_CalculateHash() const {
+    SHA256 sha256;
+    
     stringstream ss;
-    ss << _nIndex << _tTime << _sData << _nNonce << sPrevHash;
+
+    ss << _nIndex << _tTime << _sData.toString() << _nNonce << sPrevHash;
 
     // Create one-way hash object
-    SHA256 sha256;
-
     return sha256(ss.str());
 }

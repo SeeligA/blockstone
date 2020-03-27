@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <iostream>
 #include "./lib/hash-library/sha256.h"
+#include "Transaction.h"
 
 using namespace std;
 
@@ -11,7 +12,7 @@ class Block {
 public:
     string sPrevHash;
 
-    Block(uint32_t nIndexIn, const string &sDataIn);
+    Block(uint32_t nIndexIn, const Transaction &sDataIn);
 
     string GetHash();
 
@@ -20,7 +21,7 @@ public:
 private:
     uint32_t _nIndex;
     int64_t _nNonce;
-    string _sData;
+    Transaction _sData;
     string _sHash;
     time_t _tTime;
 
